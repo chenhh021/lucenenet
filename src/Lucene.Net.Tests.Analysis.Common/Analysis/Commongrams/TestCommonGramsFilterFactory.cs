@@ -80,7 +80,7 @@ namespace Lucene.Net.Analysis.CommonGrams
         }
 
         [Test]
-        public void testIgnoreCase()
+        public void TestIgnoreCase()
         {
             IResourceLoader loader = new ClasspathResourceLoader(typeof(TestAnalyzers));
             CommonGramsFilterFactory factory =
@@ -90,7 +90,7 @@ namespace Lucene.Net.Analysis.CommonGrams
             assertTrue("words is null and it shouldn't be", words != null);
             assertTrue(words.contains("the"));
             assertTrue(words.contains("The"));
-            Tokenizer tokenizer = new MockTokenizer(new StringReader("testing the factory"),MockTokenizer.WHITESPACE, false);
+            Tokenizer tokenizer = new MockTokenizer(new StringReader("testing The factory"),MockTokenizer.WHITESPACE, false);
             TokenStream stream = factory.Create(tokenizer);
             AssertTokenStreamContents(
                 stream, new String[] {"testing", "testing_The", "The", "The_factory", "factory"});
